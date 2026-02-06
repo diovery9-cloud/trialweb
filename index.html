@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sinode GKPI - Profesional & Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gkpi-blue: #0078FF;
+            --gkpi-dark: #0056b3;
+            --gkpi-light-bg: #f4f7f6;
+            --text-main: #2d3436;
+            --text-secondary: #636e72;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 5%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-container img { height: 50px; width: auto; }
+
+        .logo-text {
+            color: var(--gkpi-blue);
+            font-size: 14px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--gkpi-blue); }
+
+        /* Mobile Menu Toggle */
+        #menu-toggle { display: none; }
+        .menu-icon { display: none; font-size: 24px; cursor: pointer; }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
+        .hero-content p { font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 300; }
+
+        /* --- Visi Misi --- */
+        .section-padding { padding: 80px 10%; }
+
+        .visi-misi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            background: var(--gkpi-light-bg);
+        }
+
+        .box h2 { color: var(--gkpi-blue); font-size: 2rem; margin-bottom: 15px; border-left: 5px solid var(--gkpi-blue); padding-left: 15px; }
+        .box p { font-size: 1.1rem; color: var(--text-secondary); }
+
+        /* --- Wilayah & Moto --- */
+        .blue-banner {
+            background: var(--gkpi-blue);
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .banner-text { padding: 60px 10%; }
+        .banner-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        .btn-outline:hover { background: white; color: var(--gkpi-blue); }
+
+        .banner-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- News Section --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            transition: transform 0.3s;
+        }
+        .news-card:hover { transform: translateY(-5px); }
+
+        .date-badge {
+            background: var(--gkpi-blue);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .card-content { padding: 20px; }
+        .card-content h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .card-content p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px; }
+        .read-more { color: var(--gkpi-blue); font-weight: 700; text-decoration: none; font-size: 0.8rem; }
+
+        /* --- Multimedia --- */
+        .media-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .media-box { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* --- Footer --- */
+        footer { background: #2d3436; color: white; padding: 60px 10% 20px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-about h3 { color: var(--gkpi-blue); margin-bottom: 20px; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { color: white; font-size: 1.5rem; transition: var(--transition); }
+        .social-links a:hover { color: var(--gkpi-blue); }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #b2bec3;
+        }
+
+        /* --- Responsive Logic --- */
+        @media (max-width: 992px) {
+            .menu-icon { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.5s;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            #menu-toggle:checked ~ .nav-links { left: 0; }
+            .nav-links li { padding: 15px 0; border-bottom: 1px solid #eee; }
+            
+            .blue-banner, .media-container { grid-template-columns: 1fr; }
+            .banner-img { height: 250px; }
+        }
+
+        <style>
+        .vertical-centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .centered-item-card {
+            background: var(--white);
+            width: 100%;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .centered-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,120,255,0.08);
+        }
+
+        .centered-img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .centered-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .centered-info h3 {
+            font-size: 1.5rem;
+            color: var(--gkpi-blue);
+            margin-bottom: 15px;
+        }
+
+        .centered-info p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .btn-action {
+            text-decoration: none;
+            color: white;
+            background: var(--gkpi-blue);
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 120, 255, 0.3);
+        }
+
+        .btn-action:hover {
+            background: var(--gkpi-dark);
+            box-shadow: 0 6px 20px rgba(0, 120, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .divider-line {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gkpi-blue), transparent);
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .centered-item-card {
+                padding: 30px 20px;
+            }
+            .centered-info h3 {
+                font-size: 1.3rem;
+            }
+        }
+<style>
+        <style>
+    .announcement-bar {
+        background: var(--gkpi-blue); /* Biru Solid */
+        display: flex;
+        align-items: center;
+        height: 45px;
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .ticker-wrapper {
+        flex-grow: 1;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background: var(--gkpi-blue); /* Pastikan background di sini juga biru */
+    }
+
+    .ticker-text {
+        display: inline-block;
+        white-space: nowrap;
+        padding-left: 100%;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 30px;
+        color: white; /* Teks Putih agar terbaca di background biru */
+        animation: ticker 25s linear infinite;
+    }
+
+    .ticker-text:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    @media (max-width: 600px) {
+        .announcement-bar { height: 40px; }
+        .announcement-label { padding: 0 15px; font-size: 10px; }
+        .announcement-label::after { display: none; } /* Sederhanakan di mobile */
+    }
+</style>
+    </style>
+
+    </style>
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="C:\Users\User\Pictures\landing page\logo.png" alt="GKPI Logo">
+                <div class="logo-text">
+                    <strong>Gereja Kristen Protestan Indonesia </strong><br>
+                    <small>Sinode Pusat</small>
+                </div>
+            </a>
+
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Resort/JK</a></li>
+                <li><a href="#">Yayasan</a></li>
+                <li><a href="#">Publikasi</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Sinode GKPI</h1>
+            <p>Menjadi Persekutuan Penyembahan dan Persembahan</p>
+        </div>
+    </section>
+
+    <div class="announcement-bar">
+    <div class="ticker-wrapper">
+        <div class="ticker-text">
+            Tahun Renstra 2026 : Penyembahan & Misi — Melayani dengan Kasih dan Kesetiaan — Gereja Kristen Protestan Indonesia (GKPI) 
+        </div>
+    </div>
+</div>
+    <section class="section-padding visi-misi">
+        <div class="box">
+            <h2>Visi</h2>
+            <p>Menjadi Persekutuan Penyembahan dan Persembahan Pada Tahun 2030 yang inklusif dan transformatif bagi jemaat dan masyarakat.</p>
+        </div>
+        <div class="box">
+            <h2>Misi</h2>
+            <p>Meningkatkan Panca Pelayanan GKPI secara profesional melalui Koinonia, Marturia, Diakonia, Liturgia, dan Oikonomia.</p>
+        </div>
+    </section>
+
+    <section class="blue-banner">
+        <div class="banner-text">
+            <h2>Wilayah Pelayanan</h2>
+            <p style="margin-bottom: 25px;">Tersebar di seluruh pelosok nusantara, melayani dengan kasih dan sukacita untuk kemuliaan nama Tuhan.</p>
+            <a href="#" class="btn-outline">Eksplorasi Peta Gereja</a>
+        </div>
+        <div class="banner-img">
+            <img src="C:\Users\User\Pictures\landing page\map1.png" alt="Church Activity">
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <h2 style="text-align:center; margin-bottom: 40px;">Berita & Artikel Terbaru</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="date-badge">
+                    <span style="font-size: 1.5rem;">16</span>
+                    <span>DES</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--gkpi-blue); font-weight: bold;">RENUNGAN</small>
+                    <h3>Berjalan Dalam Terang</h3>
+                    <p>Yohanes 8:12 - "Akulah terang dunia; barangsiapa mengikut Aku, ia tidak akan berjalan dalam kegelapan..."</p>
+                    <a href="#" class="read-more">SELENGKAPNYA →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="date-badge">
+                    <span style="font-size: 1.5rem;">15</span>
+                    <span>DES</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--gkpi-blue); font-weight: bold;">KEGIATAN</small>
+                    <h3>Sinode Kerja 2025</h3>
+                    <p>Persiapan pelayanan menyambut tahun baru dengan semangat pelayanan yang lebih profesional dan berdampak.</p>
+                    <a href="#" class="read-more">SELENGKAPNYA →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="section-padding" style="background: var(--gkpi-light-bg);">
+        <h2 style="text-align:center; margin-bottom: 40px;">Multimedia GKPI</h2>
+        <div class="media-container">
+            <div class="media-box">
+                <h3 style="margin-bottom:15px;"><i class="fab fa-spotify" style="color:#1DB954"></i> Podcast GKPI</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://open.spotify.com/embed/show/3D6fS2PqU9TzGfP3v7r4f5" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+            <div class="media-box">
+                <h3 style="margin-bottom:15px;"><i class="fab fa-youtube" style="color:#FF0000"></i> Video Terbaru</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/@GKPIOfficial" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: var(--gkpi-light-bg);">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="color: var(--gkpi-blue); text-transform: uppercase; letter-spacing: 2px; font-size: 2rem;">Yayasan & Lembaga Terkait</h2>
+            <div style="width: 60px; height: 4px; background: var(--gkpi-blue); margin: 15px auto;"></div>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Mengenal lebih dekat unit-unit pelayanan strategis di bawah naungan Sinode GKPI.</p>
+        </div>
+
+        <div class="vertical-centered-container">
+            <div class="centered-item-card">
+                <div class="centered-img">
+                    <img src="https://gkpisinode.org/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-24-at-19.02.27-150x150.jpeg" alt="Yayasan 1">
+                </div>
+                <div class="centered-info">
+                    <h3>Pusat Pelatihan GKPI</h3>
+                    <p>Pusat pengembangan kapasitas bagi para pelayan dan jemaat dalam memperdalam iman teologis serta keterampilan kepemimpinan Kristen di era modern.</p>
+                </div>
+                <a href="#" class="btn-action">Profil Lembaga</a>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="centered-item-card">
+                <div class="centered-img">
+                    <img src="https://gkpisinode.org/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-16-at-14.08.10-1-150x150.jpeg" alt="Yayasan 2">
+                </div>
+                <div class="centered-info">
+                    <h3>Badan Usaha GKPI</h3>
+                    <p>Mengelola aset-aset gereja secara profesional untuk mendukung kemandirian finansial dan pendanaan pelayanan penginjilan di seluruh pelosok.</p>
+                </div>
+                <a href="#" class="btn-action">Profil Lembaga</a>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="centered-item-card">
+                <div class="centered-img">
+                    <img src="https://gkpisinode.org/wp-content/uploads/2021/10/lppm-150x150.jpg" alt="Yayasan 3">
+                </div>
+                <div class="centered-info">
+                    <h3>LPPM GKPI</h3>
+                    <p>Lembaga Pemberdayaan Masyarakat yang bergerak dalam aksi kemanusiaan, penanggulangan bencana, dan peningkatan ekonomi kreatif jemaat.</p>
+                </div>
+                <a href="#" class="btn-action">Profil Lembaga</a>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="centered-item-card">
+                <div class="centered-img">
+                    <img src="https://gkpisinode.org/wp-content/uploads/2021/10/Yapentra-150x150.jpg" alt="Yayasan 4">
+                </div>
+                <div class="centered-info">
+                    <h3>Yapentra</h3>
+                    <p>Yayasan Pendidikan Tunanetra yang berfokus pada pelayanan pendidikan inklusif dan pembinaan bagi saudara-saudari kita yang memiliki kebutuhan khusus.</p>
+                </div>
+                <a href="#" class="btn-action">Profil Lembaga</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>KANTOR SINODE GKPI</h3>
+                <p>Gereja Kristen Protestan Indonesia (GKPI) berkomitmen untuk terus bertumbuh dalam iman dan pelayanan di seluruh Indonesia.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;">Link Terkait</h4>
+                <ul style="list-style:none; line-height:2;">
+                    <li><a href="#" style="color:#ccc; text-decoration:none;">Yayasan Pendidikan</a></li>
+                    <li><a href="#" style="color:#ccc; text-decoration:none;">Lembaga Diakonia</a></li>
+                    <li><a href="#" style="color:#ccc; text-decoration:none;">Peta Lokasi Gereja</a></li>
+                    <li><a href="#" style="color:#ccc; text-decoration:none;">Warta Jemaat</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;">Kontak Kami</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Kapt Sitorus No. 13 Pematang Siantar, Sumatera Utara</p>
+                <p><i class="fas fa-phone"></i> (0622) 22664</p>
+                <p><i class="fas fa-envelope"></i> suaragkpi31@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GKPI (Gereja Kristen Protestan Indonesia). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
